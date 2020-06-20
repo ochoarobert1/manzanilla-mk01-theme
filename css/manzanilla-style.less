@@ -1,0 +1,170 @@
+// compress: false, javascriptEnabled: true
+/* --------------------------------------------------------------
+/* MAIN LESS MIXINS AND FUNCTIONS - LESSHAT
+-------------------------------------------------------------- */
+@import 'less/_lesshat.less';
+/* --------------------------------------------------------------
+VARIABLES
+-------------------------------------------------------------- */
+
+@mainfont: 'Merriweather', serif;
+@secondfont: 'Source Sans Pro', sans-serif;
+@black: #000000;
+@white: #ffffff;
+
+@gray: #F7F7F7;
+@softblack: #1e1e1e;
+@hovercolor: #f78a74;
+
+/* --------------------------------------------------------------
+BODY DEFAULTS
+-------------------------------------------------------------- */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: @mainfont;
+    font-weight: 400;
+}
+
+a {
+    .transition(all .2s ease-in-out);
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.page-container {
+    min-height: 85vh;
+    padding: 6rem 1rem;
+}
+
+@media (min-width: 1250px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1200px;
+    }
+}
+
+/* --------------------------------------------------------------
+1.- HEADER
+-------------------------------------------------------------- */
+.the-header {
+    padding: 1.5rem 1rem;
+
+    & .header-left {
+        & a {
+            color: @black;
+            margin-right: 15px;
+            font-size: 1.2rem;
+
+            &:hover {
+                color: @hovercolor;
+            }
+        }
+    }
+
+    & .header-center {
+        & .navbar-brand {
+            display: block;
+            margin: 0 auto;
+            padding: 0;
+            padding-bottom: 0.5rem;
+        }
+    }
+
+    & .header-right {
+        text-align: right;
+        font-size: 1.2rem;
+    }
+}
+
+.img-logo {
+    .transition(all .3s ease-in-out);
+    opacity: 1;
+
+    &:hover {
+        opacity: .7;
+    }
+}
+
+.the-navbar {
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+
+    & .navbar {
+        padding: 0;
+    }
+
+    & .navbar-nav .nav-link {
+        font-family: @secondfont;
+        color: @softblack;
+        text-transform: uppercase;
+        padding: 1rem 1rem !important;
+        font-weight: 900;
+        margin: 0 1rem;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+
+        &:hover {
+            color: @hovercolor;
+        }
+    }
+}
+
+/* --------------------------------------------------------------
+2.- FOOTER
+-------------------------------------------------------------- */
+
+/* --------------------------------------------------------------
+3.- HOME
+-------------------------------------------------------------- */
+
+
+
+/* --------------------------------------------------------------
+4.- CATEGORY / TAG
+-------------------------------------------------------------- */
+.title-container {
+    background: @gray;
+    padding: 2.5rem;
+    text-align: center;
+    border-bottom: 1px solid #e3e3e3;
+
+    & small {
+        color: @softblack;
+        font-size: 1.2rem;
+    }
+
+    & h1 {
+        font-family: @secondfont;
+        font-size: 1.8rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 0.3rem auto;
+    }
+}
+
+.archive-item {
+    position: relative;
+    margin-bottom: 4rem;
+
+    & .archive-item-info-container {
+        background: @white;
+        position: absolute;
+        top: 20%;
+        right: 0;
+        max-width: 65%;
+        max-height: 240px;
+        padding: 1.5rem;
+        box-shadow: 0 0 15px rgba(26, 26, 26, 0.2);
+    }
+}

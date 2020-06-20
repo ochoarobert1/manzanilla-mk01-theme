@@ -89,22 +89,6 @@ function manzanilla_customize_register( $wp_customize ) {
         'label' => __( 'YouTube', 'manzanilla' ),
     ) );
 
-    $wp_customize->add_setting('mc_social_settings[yelp]', array(
-        'default'           => '',
-        'sanitize_callback' => 'manzanilla_sanitize_url',
-        'capability'        => 'edit_theme_options',
-        'type'           => 'option',
-
-    ));
-
-    $wp_customize->add_control( 'yelp', array(
-        'type' => 'url',
-        'section' => 'mc_social_settings',
-        'settings' => 'mc_social_settings[yelp]',
-        'label' => __( 'Yelp', 'manzanilla' ),
-    ) );
-
-
     $wp_customize->add_section('mc_cookie_settings', array(
         'title'    => __('Cookies', 'manzanilla'),
         'description' => __('Opciones de Cookies', 'manzanilla'),
