@@ -8,14 +8,13 @@
     <meta name="robots" content="NOODP, INDEX, FOLLOW" />
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="pingback" href="<?php echo esc_url(get_bloginfo('pingback_url')); ?>" />
     <link rel="profile" href="http://gmpg.org/xfn/11" />
-    <link rel="dns-prefetch" href="//connect.facebook.net" />
-    <link rel="dns-prefetch" href="//facebook.com" />
-    <link rel="dns-prefetch" href="//googleads.g.doubleclick.net" />
-    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
-    <link rel="dns-prefetch" href="//google-analytics.com" />
+    <link rel="dns-prefetch" href="//facebook.com" crossorigin />
+    <link rel="dns-prefetch" href="//connect.facebook.net" crossorigin />
+    <link rel="dns-prefetch" href="//ajax.googleapis.com" crossorigin />
+    <link rel="dns-prefetch" href="//google-analytics.com" crossorigin />
     <?php /* FAVICONS */ ?>
     <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/images/apple-touch-icon.png" />
     <?php /* THEME NAVBAR COLOR */ ?>
@@ -35,7 +34,7 @@
     <?php wp_title('|', false, 'right'); ?>
     <?php wp_head() ?>
     <?php /* OPEN GRAPHS INFO - COMMENTS SCRIPTS */ ?>
-    <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
+    <?php if ( is_single('post') && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
     <?php /* IE COMPATIBILITIES */ ?>
     <!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7" /><![endif]-->
     <!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8" /><![endif]-->
@@ -49,57 +48,21 @@
 </head>
 
 <body class="the-main-body <?php echo join(' ', get_body_class()); ?>" itemscope itemtype="http://schema.org/WebPage">
+    <?php wp_body_open(); ?>
     <div id="fb-root"></div>
     <header class="container-fluid p-0" role="banner" itemscope itemtype="http://schema.org/WPHeader">
         <div class="row no-gutters">
             <div class="the-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="header-left col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-xl-block d-lg-block d-md-block d-sm-none d-none">
-                            <?php $social_options = get_option('mc_social_settings'); ?>
-                            <div class="social-icons">
-                                <?php if (isset($social_options['facebook'])) { ?>
-                                <a href="<?php echo esc_url($social_options['facebook']);?>" title="<?php _e('Visitame en Facebook', 'manzana'); ?>" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <?php } ?>
-
-                                <?php if (isset($social_options['twitter'])) { ?>
-                                <a href="<?php echo esc_url($social_options['twitter']);?>" title="<?php _e('Visitame en Twitter', 'manzana'); ?>" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <?php } ?>
-
-                                <?php if (isset($social_options['instagram'])) { ?>
-                                <a href="<?php echo esc_url($social_options['instagram']);?>" title="<?php _e('Visitame en Instagram', 'manzana'); ?>" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <?php } ?>
-
-                                <?php if (isset($social_options['youtube'])) { ?>
-                                <a href="<?php echo esc_url($social_options['youtube']);?>" title="<?php _e('Visitame en YouTube', 'manzana'); ?>" target="_blank"><i class="fa fa-youtube"></i></a>
-                                <?php } ?>
-
-                                <?php if (isset($social_options['linkedin'])) { ?>
-                                <a href="<?php echo esc_url($social_options['linkedin']);?>" title="<?php _e('Visitame en LinkedIn', 'manzana'); ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="header-center col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-xl-block d-lg-block d-md-block d-sm-block d-block">
-                            <a class="navbar-brand" href="<?php echo home_url('/');?>" title="<?php echo get_bloginfo('name'); ?>">
-                                <?php $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
-                                <?php $image = wp_get_attachment_image_src( $custom_logo_id , 'logo' ); ?>
-                                <?php if (!empty($image)) { ?>
-                                <img itemprop="image" content="<?php echo $image[0];?>" src="<?php echo $image[0];?>" alt="<?php echo get_bloginfo('name'); ?>" class="img-fluid img-logo" width="<?php echo $image[1]; ?>" height="<?php echo $image[2]; ?>" />
-                                <?php } else { ?>
-                                Navbar
-                                <?php } ?>
-                            </a>
-                        </div>
-                        <div class="header-right col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-xl-block d-lg-block d-md-block d-sm-none d-none">
-                            <i class="fa fa-search"></i>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="the-navbar col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <nav class="navbar navbar-expand-md" role="navigation">
+                    <a class="navbar-brand" href="<?php echo home_url('/');?>" title="<?php echo get_bloginfo('name'); ?>">
+                        <?php $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
+                        <?php $image = wp_get_attachment_image_src( $custom_logo_id , 'logo' ); ?>
+                        <?php if (!empty($image)) { ?>
+                        <img src="<?php echo $image[0];?>" alt="<?php echo get_bloginfo('name'); ?>" class="img-fluid img-logo" />
+                        <?php } else { ?>
+                        Navbar
+                        <?php } ?>
+                    </a>
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -111,7 +74,7 @@
                             'container'       => 'div',
                             'container_class' => 'collapse navbar-collapse',
                             'container_id'    => 'bs-example-navbar-collapse-1',
-                            'menu_class'      => 'navbar-nav ml-auto mr-auto',
+                            'menu_class'      => 'navbar-nav ml-auto',
                             'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
                             'walker'          => new WP_Bootstrap_Navwalker(),
                         ) );

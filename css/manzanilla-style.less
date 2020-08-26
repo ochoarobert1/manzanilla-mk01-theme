@@ -7,14 +7,10 @@
 VARIABLES
 -------------------------------------------------------------- */
 
-@mainfont: 'Merriweather', serif;
-@secondfont: 'Source Sans Pro', sans-serif;
+@mainfont: 'Open Sans', sans-serif;
+@secondfont: 'Open Sans', sans-serif;
 @black: #000000;
 @white: #ffffff;
-
-@gray: #F7F7F7;
-@softblack: #1e1e1e;
-@hovercolor: #f78a74;
 
 /* --------------------------------------------------------------
 BODY DEFAULTS
@@ -22,6 +18,14 @@ BODY DEFAULTS
 html,
 body {
     height: 100%;
+    scroll-behavior: smooth;
+}
+
+
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
 
 body {
@@ -38,86 +42,42 @@ a {
 }
 
 .page-container {
-    min-height: 85vh;
-    padding: 6rem 1rem;
+    min-height: 75vh;
 }
 
-@media (min-width: 1250px) {
+/* LOADER */
+.loader {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
 
-    .container,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container-xl {
-        max-width: 1200px;
+.loader:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid @black;
+    border-color: @black transparent @black transparent;
+    animation: loader-spin 1.2s linear infinite;
+}
+
+@keyframes loader-spin {
+    0% {
+        .transform(rotate(0deg));
+    }
+
+    100% {
+        .transform(rotate(360deg));
     }
 }
+
 
 /* --------------------------------------------------------------
 1.- HEADER
 -------------------------------------------------------------- */
-.the-header {
-    padding: 1.5rem 1rem;
-
-    & .header-left {
-        & a {
-            color: @black;
-            margin-right: 15px;
-            font-size: 1.2rem;
-
-            &:hover {
-                color: @hovercolor;
-            }
-        }
-    }
-
-    & .header-center {
-        & .navbar-brand {
-            display: block;
-            margin: 0 auto;
-            padding: 0;
-            padding-bottom: 0.5rem;
-        }
-    }
-
-    & .header-right {
-        text-align: right;
-        font-size: 1.2rem;
-    }
-}
-
-.img-logo {
-    .transition(all .3s ease-in-out);
-    opacity: 1;
-
-    &:hover {
-        opacity: .7;
-    }
-}
-
-.the-navbar {
-    border-top: 1px solid #e3e3e3;
-    border-bottom: 1px solid #e3e3e3;
-
-    & .navbar {
-        padding: 0;
-    }
-
-    & .navbar-nav .nav-link {
-        font-family: @secondfont;
-        color: @softblack;
-        text-transform: uppercase;
-        padding: 1rem 1rem !important;
-        font-weight: 900;
-        margin: 0 1rem;
-        font-size: 0.9rem;
-        letter-spacing: 2px;
-
-        &:hover {
-            color: @hovercolor;
-        }
-    }
-}
 
 /* --------------------------------------------------------------
 2.- FOOTER
@@ -126,45 +86,3 @@ a {
 /* --------------------------------------------------------------
 3.- HOME
 -------------------------------------------------------------- */
-
-
-
-/* --------------------------------------------------------------
-4.- CATEGORY / TAG
--------------------------------------------------------------- */
-.title-container {
-    background: @gray;
-    padding: 2.5rem;
-    text-align: center;
-    border-bottom: 1px solid #e3e3e3;
-
-    & small {
-        color: @softblack;
-        font-size: 1.2rem;
-    }
-
-    & h1 {
-        font-family: @secondfont;
-        font-size: 1.8rem;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        font-weight: 600;
-        margin: 0.3rem auto;
-    }
-}
-
-.archive-item {
-    position: relative;
-    margin-bottom: 4rem;
-
-    & .archive-item-info-container {
-        background: @white;
-        position: absolute;
-        top: 20%;
-        right: 0;
-        max-width: 65%;
-        max-height: 240px;
-        padding: 1.5rem;
-        box-shadow: 0 0 15px rgba(26, 26, 26, 0.2);
-    }
-}

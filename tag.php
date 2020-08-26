@@ -59,3 +59,4 @@
     </div>
 </main>
 <?php get_footer(); ?>
+<div class="header-numbers"><img src="http://dtwstudio.com/prevision/wp-content/uploads/2020/08/001-venezuela.png" width="16" height="16" alt="" /> (0212) 263.9225 | 262.1252 - <img src="http://dtwstudio.com/prevision/wp-content/uploads/2020/08/002-dominican-republic.png" width="16" height="16" alt="" /> 849-456.4999 | 829-544.7870<div>

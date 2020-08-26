@@ -19,7 +19,7 @@ add_action('woocommerce_before_main_content', 'manzanilla_woocommerce_custom_wra
 add_action('woocommerce_after_main_content', 'manzanilla_woocommerce_custom_wrapper_end', 10);
 
 function manzanilla_woocommerce_custom_wrapper_start() {
-    echo '<section id="main" class="container-fluid"><div class="row"><div class="woocustom-main-container col-12">';
+    echo '<section id="main" class="container-fluid"><div class="row"><div class="woocustom-main-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">';
 }
 
 function manzanilla_woocommerce_custom_wrapper_end() {

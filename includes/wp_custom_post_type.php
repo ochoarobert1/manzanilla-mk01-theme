@@ -1,5 +1,5 @@
 <?php
-
+/*
 function manzanilla_custom_post_type() {
 
 	$labels = array(
@@ -57,3 +57,4 @@ function manzanilla_custom_post_type() {
 }
 
 add_action( 'init', 'manzanilla_custom_post_type', 0 );
+*/

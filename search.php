@@ -5,7 +5,7 @@
             <div class="container p-0">
                 <div class="row">
                     <div class="title-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h1><?php echo sprintf( __( '%s Search Results for ', 'manzanilla' ), $wp_query->found_posts ); echo esc_attr(get_search_query()); ?></h1>
+                        <h1><?php echo sprintf( __( '%s Resultados para ', 'manzanilla' ), $wp_query->found_posts ); echo esc_attr(get_search_query()); ?></h1>
                     </div>
                     <?php if (have_posts()) : ?>
                     <section class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">

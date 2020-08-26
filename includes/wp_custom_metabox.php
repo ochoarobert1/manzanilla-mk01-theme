@@ -60,11 +60,11 @@ add_filter( 'cmb2_show_on', 'be_metabox_show_on_slug', 10, 2 );
 
 add_action( 'cmb2_admin_init', 'manzanilla_register_custom_metabox' );
 function manzanilla_register_custom_metabox() {
-    $prefix = 'mc_';
+    $prefix = 'mcr_';
 
     $cmb_metabox = new_cmb2_box( array(
         'id'            => $prefix . 'metabox',
-        'title'         => esc_html__( 'Test Metabox', 'cmb2' ),
+        'title'         => esc_html__( 'Test Metabox', 'manzanilla' ),
         'object_types'  => array( 'page' ), // Post type
         // 'show_on_cb' => 'yourprefix_show_if_front_page', // function should return a bool value
         // 'context'    => 'normal',
@@ -77,8 +77,8 @@ function manzanilla_register_custom_metabox() {
     ) );
 
     $cmb_metabox->add_field( array(
-        'name'       => esc_html__( 'Test Text', 'cmb2' ),
-        'desc'       => esc_html__( 'field description (optional)', 'cmb2' ),
+        'name'       => esc_html__( 'Test Text', 'manzanilla' ),
+        'desc'       => esc_html__( 'field description (optional)', 'manzanilla' ),
         'id'         => $prefix . 'text',
         'type'       => 'text',
         'show_on_cb' => 'yourprefix_hide_if_no_cats', // function should return a bool value

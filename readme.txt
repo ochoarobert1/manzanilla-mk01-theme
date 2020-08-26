@@ -1,16 +1,15 @@
-# Manzanilla Creativa - Wordpress Custom Theme #
+# manzanilla - Wordpress Custom Theme #
 
 * Version: 1.0.0
 * Design: [Robert Ochoa](http://www.robertochoa.com.ve/)
 * Development: [Robert Ochoa](http://www.robertochoa.com.ve/)
 
-Tema diseñado por [Robert Ochoa](http://www.robertochoa.com.ve/) para Manzanilla Creativa.
+Tema diseñado por [Robert Ochoa](http://www.robertochoa.com.ve/) para manzanilla.
 Este tema custom fue construido en su totalidad, pasando por su etapa de Wireframing, rearmado, version anterior e implementación en hosting externo.
 
 ### Componentes Principales ###
 
-* Twitter Bootstrap 4.4.1
-* Font Awesome 4.7.0
+* Twitter Bootstrap 4.5.3
 
 ### Funciones Incluídas ###
 

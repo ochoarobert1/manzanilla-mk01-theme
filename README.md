@@ -1,18 +1,17 @@
 ![alt tag](images/repo-logo.jpg)
 
-# Manzanilla Creativa - Wordpress Custom Theme #
+# manzanilla - Wordpress Custom Theme #
 
 * Version: 1.0.0
-* Design: [Robert Ochoa](http://www.robertochoa.com.ve/)
-* Development: [Robert Ochoa](http://www.robertochoa.com.ve/)
+* Design: [Robert Ochoa](http://www.robertochoa.com.ve/?utm_source=github_link&utm_medium=link&utm_content=manzanilla)
+* Development: [Robert Ochoa](http://www.robertochoa.com.ve/?utm_source=github_link&utm_medium=link&utm_content=manzanilla)
 
-Tema diseñado por [Robert Ochoa](http://www.robertochoa.com.ve/) para Manzanilla Creativa.
+Tema diseñado por [Robert Ochoa](http://www.robertochoa.com.ve/?utm_source=github_link&utm_medium=link&utm_content=manzanilla) para manzanilla.
 Este tema custom fue construido en su totalidad, pasando por su etapa de Wireframing, rearmado, version anterior e implementación en hosting externo.
 
 ### Componentes Principales ###
 
-* Twitter Bootstrap 4.4.1
-* Font Awesome 4.7.0
+* Twitter Bootstrap 4.5.3
 
 ### Funciones Incluídas ###
 
@@ -38,6 +37,6 @@ Este tema custom fue construido en su totalidad, pasando por su etapa de Wirefra
 
 Soporte Oficial para este tema:
 
-Repo Owner: [Robert Ochoa](http://www.robertochoa.com.ve/)
+Repo Owner: [Robert Ochoa](http://www.robertochoa.com.ve/?utm_source=github_link&utm_medium=link&utm_content=manzanilla)
 
-Main Developer: [Robert Ochoa](http://www.robertochoa.com.ve/)
+Main Developer: [Robert Ochoa](http://www.robertochoa.com.ve/?utm_source=github_link&utm_medium=link&utm_content=manzanilla)

@@ -1,13 +1,12 @@
 <?php get_header(); ?>
-<main class="container-fluid" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+<main class="container" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
     <div class="row">
-        <header class="title-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <h1><?php _e('blog', 'manzanilla'); ?></h1>
-        </header>
         <div class="page-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="container p-0">
                 <div class="row">
-
+                    <div class="title-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h1><?php _e('Blog', 'manzanilla'); ?></h1>
+                    </div>
                     <?php if (have_posts()) : ?>
                     <section class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
                         <?php $defaultatts = array('class' => 'img-fluid', 'itemprop' => 'image'); ?>
@@ -15,31 +14,28 @@
                         <article id="post-<?php the_ID(); ?>" class="archive-item col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 <?php echo join(' ', get_post_class()); ?>" role="article">
                             <div class="container p-0">
                                 <div class="row">
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <picture>
-                                            <?php if ( has_post_thumbnail()) : ?>
+                                    <picture class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12">
+                                        <?php if ( has_post_thumbnail()) : ?>
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                            <?php the_post_thumbnail('blog_img', $defaultatts); ?>
+                                        </a>
+                                        <?php else : ?>
+                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                            <img itemprop="image" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/no-img.jpg" alt="No img" class="img-fluid" />
+                                        </a>
+                                        <?php endif; ?>
+                                    </picture>
+                                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12">
+                                        <header>
                                             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                                <?php the_post_thumbnail('blog_img', $defaultatts); ?>
+                                                <h2 rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
                                             </a>
-                                            <?php else : ?>
-                                            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                                <img itemprop="image" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/no-img.jpg" alt="No img" class="img-fluid" />
-                                            </a>
-                                            <?php endif; ?>
-                                        </picture>
-                                        <div class="archive-item-info-container">
-                                            <header>
-                                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                                    <h2 rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
-                                                </a>
-                                                <time class="date" datetime="<?php echo get_the_time('Y-m-d') ?>" itemprop="datePublished"><?php the_time('d-m-Y'); ?></time>
-                                                <span class="author" itemprop="author" itemscope itemptype="http://schema.org/Person"><?php _e('Publicado por:', 'manzanilla'); ?> <?php the_author_posts_link(); ?></span>
-                                            </header>
-                                            <p><?php the_excerpt(); ?></p>
-                                            <a href="<?php the_permalink(); ?>" title="<?php _e('Leer Más', 'manzanilla'); ?>" class="btn btn-md btn-dark"><?php _e('Leer Más', 'manzanilla'); ?></a>
-                                        </div>
+                                            <time class="date" datetime="<?php echo get_the_time('Y-m-d') ?>" itemprop="datePublished"><?php the_time('d-m-Y'); ?></time>
+                                            <span class="author" itemprop="author" itemscope itemptype="http://schema.org/Person"><?php _e('Publicado por:', 'manzanilla'); ?> <?php the_author_posts_link(); ?></span>
+                                        </header>
+                                        <p><?php the_excerpt(); ?></p>
+                                        <a href="<?php the_permalink(); ?>" title="<?php _e('Leer Más', 'manzanilla'); ?>" class="btn btn-md btn-dark"><?php _e('Leer Más', 'manzanilla'); ?></a>
                                     </div>
-                                    <div class="w-100"></div>
                                 </div>
                             </div>
                         </article>

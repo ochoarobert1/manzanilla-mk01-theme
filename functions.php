@@ -16,14 +16,14 @@ function manzanilla_jquery_enqueue() {
     wp_deregister_script('jquery-migrate');
     if ($_SERVER['REMOTE_ADDR'] == '::1') {
         /*- JQUERY ON LOCAL  -*/
-        wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js', false, '3.4.1', false);
+        wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js', false, '3.5.1', false);
         /*- JQUERY MIGRATE ON LOCAL  -*/
         wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/js/jquery-migrate.min.js',  array('jquery'), '3.1.0', false);
     } else {
         /*- JQUERY ON WEB  -*/
-        wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.min.js', false, '3.4.1', false);
+        wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', false, '3.5.1', false);
         /*- JQUERY MIGRATE ON WEB  -*/
-        wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.1.0.min.js', array('jquery'), '3.1.0', true);
+        wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.3.1.js', array('jquery'), '3.3.1', true);
     }
     wp_enqueue_script('jquery');
     wp_enqueue_script('jquery-migrate');
@@ -70,42 +70,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 /* --------------------------------------------------------------
-    ADD THEME SUPPORT
--------------------------------------------------------------- */
-
-load_theme_textdomain( 'manzanilla', get_template_directory() . '/languages' );
-add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio' ));
-add_theme_support( 'post-thumbnails' );
-add_theme_support( 'automatic-feed-links' );
-add_theme_support( 'title-tag' );
-add_theme_support( 'menus' );
-add_theme_support( 'customize-selective-refresh-widgets' );
-add_theme_support( 'custom-background',
-                  array(
-                      'default-image' => '',    // background image default
-                      'default-color' => 'ffffff',    // background color default (dont add the #)
-                      'wp-head-callback' => '_custom_background_cb',
-                      'admin-head-callback' => '',
-                      'admin-preview-callback' => ''
-                  )
-                 );
-add_theme_support( 'custom-logo', array(
-    'height'      => 250,
-    'width'       => 250,
-    'flex-width'  => true,
-    'flex-height' => true,
-) );
-
-
-add_theme_support( 'html5', array(
-    'search-form',
-    'comment-form',
-    'comment-list',
-    'gallery',
-    'caption',
-) );
-
-/* --------------------------------------------------------------
     ADD NAV MENUS LOCATIONS
 -------------------------------------------------------------- */
 
@@ -118,6 +82,7 @@ register_nav_menus( array(
 -------------------------------------------------------------- */
 
 add_action( 'widgets_init', 'manzanilla_widgets_init' );
+
 function manzanilla_widgets_init() {
     register_sidebar( array(
         'name' => __( 'Sidebar Principal', 'manzanilla' ),
@@ -130,9 +95,9 @@ function manzanilla_widgets_init() {
     ) );
 
     register_sidebars( 4, array(
-        'name'          => __('Footer Section %d', 'manzanilla'),
+        'name'          => __('Pie de Página %d', 'manzanilla'),
         'id'            => 'sidebar_footer',
-        'description'   => __('Footer Section', 'manzanilla'),
+        'description'   => __('Estos widgets seran vistos en el pie de página del sitio', 'manzanilla'),
         'before_widget' => '<li id="%1$s" class="widget %2$s">',
         'after_widget'  => '</li>',
         'before_title'  => '<h2 class="widgettitle">',
@@ -140,7 +105,7 @@ function manzanilla_widgets_init() {
     ) );
 
     //    register_sidebar( array(
-    //        'name' => __( 'Shop Sidebar', 'manzanilla' ),
+    //        'name' => __( 'Sidebar de la Tienda', 'manzanilla' ),
     //        'id' => 'shop_sidebar',
     //        'description' => __( 'Estos widgets seran vistos en Tienda y Categorias de Producto', 'manzanilla' ),
     //        'before_widget' => '<li id='%1$s' class='widget %2$s'>',
@@ -150,27 +115,7 @@ function manzanilla_widgets_init() {
     //    ) );
 }
 
-/* --------------------------------------------------------------
-    CUSTOM ADMIN LOGIN
--------------------------------------------------------------- */
 
-function custom_admin_styles() {
-    $version_remove = NULL;
-    wp_register_style('wp-admin-style', get_template_directory_uri() . '/css/custom-wordpress-admin-style.css', false, $version_remove, 'all');
-    wp_enqueue_style('wp-admin-style');
-}
-add_action('login_head', 'custom_admin_styles');
-add_action('admin_init', 'custom_admin_styles');
-
-
-function dashboard_footer() {
-    echo '<span id="footer-thankyou">';
-    _e ('Gracias por crear con ', 'manzanilla' );
-    echo '<a href="http://wordpress.org/" target="_blank">WordPress.</a> - ';
-    _e ('Tema desarrollado por ', 'manzanilla' );
-    echo '<a href="http://robertochoa.com.ve/?utm_source=footer_admin&utm_medium=link&utm_content=manzanilla" target="_blank">Robert Ochoa</a></span>';
-}
-add_filter('admin_footer_text', 'dashboard_footer');
 
 /* --------------------------------------------------------------
     ADD CUSTOM METABOX
