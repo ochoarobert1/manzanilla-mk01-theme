@@ -1,5 +1,5 @@
 <?php
-function proyecto_load_js() {
+function manzanilla_load_js() {
     $version_remove = NULL;
     if (!is_admin()){
         if ($_SERVER['REMOTE_ADDR'] == '::1') {
@@ -105,4 +105,4 @@ function proyecto_load_js() {
     }
 }
 
-add_action('wp_enqueue_scripts', 'proyecto_load_js');
+add_action('wp_enqueue_scripts', 'manzanilla_load_js');

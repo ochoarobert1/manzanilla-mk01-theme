@@ -94,7 +94,7 @@ function manzanilla_widgets_init() {
         'after_title'   => '</h2>',
     ) );
 
-    register_sidebars( 4, array(
+    register_sidebars( 3, array(
         'name'          => __('Pie de Página %d', 'manzanilla'),
         'id'            => 'sidebar_footer',
         'description'   => __('Estos widgets seran vistos en el pie de página del sitio', 'manzanilla'),
@@ -103,19 +103,7 @@ function manzanilla_widgets_init() {
         'before_title'  => '<h2 class="widgettitle">',
         'after_title'   => '</h2>'
     ) );
-
-    //    register_sidebar( array(
-    //        'name' => __( 'Sidebar de la Tienda', 'manzanilla' ),
-    //        'id' => 'shop_sidebar',
-    //        'description' => __( 'Estos widgets seran vistos en Tienda y Categorias de Producto', 'manzanilla' ),
-    //        'before_widget' => '<li id='%1$s' class='widget %2$s'>',
-    //        'after_widget'  => '</li>',
-    //        'before_title'  => '<h2 class='widgettitle'>',
-    //        'after_title'   => '</h2>',
-    //    ) );
 }
-
-
 
 /* --------------------------------------------------------------
     ADD CUSTOM METABOX
@@ -144,6 +132,7 @@ if ( function_exists('add_theme_support') ) {
 }
 if ( function_exists('add_image_size') ) {
     add_image_size('avatar', 100, 100, true);
-    add_image_size('blog_img', 276, 217, true);
+    add_image_size('logo', 200, 50, true);
+    add_image_size('blog_img', 385, 295, true);
     add_image_size('single_img', 636, 297, true );
 }

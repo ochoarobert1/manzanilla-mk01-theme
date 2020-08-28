@@ -86,6 +86,21 @@ function manzanilla_customize_register( $wp_customize ) {
         'label' => __( 'YouTube', 'manzanilla' ),
     ) );
 
+    $wp_customize->add_setting('mcr_social_settings[pinterest]', array(
+        'default'           => '',
+        'sanitize_callback' => 'manzanilla_sanitize_url',
+        'capability'        => 'edit_theme_options',
+        'type'           => 'option',
+
+    ));
+
+    $wp_customize->add_control( 'pinterest', array(
+        'type' => 'url',
+        'section' => 'mcr_social_settings',
+        'settings' => 'mcr_social_settings[pinterest]',
+        'label' => __( 'Pinterest', 'manzanilla' ),
+    ) );
+
     /* COOKIES SETTINGS */
     $wp_customize->add_section('mcr_cookie_settings', array(
         'title'    => __('Cookies', 'manzanilla'),

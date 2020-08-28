@@ -7,10 +7,14 @@
 VARIABLES
 -------------------------------------------------------------- */
 
-@mainfont: 'Open Sans', sans-serif;
-@secondfont: 'Open Sans', sans-serif;
+@mainfont: 'Work Sans', sans-serif;
+@secondfont: 'Prata', serif;
 @black: #000000;
 @white: #ffffff;
+@gray: #EAF1EF;
+@hgray: #7F7F7F;
+@orange: #FF3901;
+@sblue: #6CA8BB;
 
 /* --------------------------------------------------------------
 BODY DEFAULTS
@@ -74,15 +78,408 @@ a {
     }
 }
 
+@media (min-width: 1200px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1200px;
+    }
+}
+
+.btn-orange {
+    background: @orange;
+    color: @white;
+    text-transform: uppercase;
+    font-size: .9rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+.mailchimp-single-form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-container {
+    list-style: none;
+    padding-left: 2rem;
+}
+
+.separator-title-container {
+    position: relative;
+    text-align: center;
+    margin-bottom: 1rem;
+
+    & hr {
+        position: absolute;
+        top: 7%;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+    }
+
+    & h2 {
+        background: @white;
+        z-index: 9;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+}
 
 /* --------------------------------------------------------------
 1.- HEADER
 -------------------------------------------------------------- */
+.container-header {
+    background: @black;
+    z-index: 9999;
+
+    & .the-header {
+        padding: 1rem 0;
+
+        & .navbar-nav {
+            li.nav-item {
+                & .nav-link {
+                    color: @white;
+                    font-size: 1rem;
+                    padding: 1rem 1.5rem;
+                    font-weight: 300;
+                    letter-spacing: 1.5px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        & .header-social-container {
+            .display(flex);
+            .align-items(center);
+            .justify-content(flex-end);
+
+            & a {
+                color: @white;
+                padding: 0 .5rem;
+            }
+
+            & .header-search-container {
+                border-left: 1px solid @white;
+                padding: 5px 0;
+                margin-left: 1rem;
+                padding-left: 1rem;
+            }
+        }
+    }
+}
+
+.home .container-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: none transparent !important;
+}
 
 /* --------------------------------------------------------------
 2.- FOOTER
 -------------------------------------------------------------- */
+.the-instagram {
+    background: @orange;
+    color: @white;
+    text-align: center;
+    padding: 3rem 1rem;
+    font-size: .8rem;
+    letter-spacing: -.5px;
+
+    & h5 {
+        font-size: 1rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    & .instagram-title {
+        color: @white;
+        font-size: 2.5rem;
+        font-weight: 300;
+        letter-spacing: 8px;
+    }
+}
+
+.the-footer {
+    background: @sblue;
+    color: @white;
+    padding: 1.5rem 1rem;
+
+    & .footer-sidebar {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        & a {
+            color: @white;
+        }
+    }
+
+    & .widget_text {
+        font-size: 0.9rem;
+
+        & p {
+            margin-bottom: 0;
+        }
+    }
+
+    & .menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        & .menu-item {
+            position: relative;
+
+            &:after {
+                content: '/';
+                position: absolute;
+                top: 0;
+                right: -10px;
+                font-weight: 300;
+            }
+
+            & .nav-link {
+                text-transform: uppercase;
+                font-weight: 400;
+                padding: 0 1rem;
+                letter-spacing: .5px;
+            }
+
+            &:last-child {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+
+
+    }
+
+    & .social-header a {
+        padding: 0 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    & .row-footer {
+        & article.footer-item:nth-child(3) {
+            text-align: right;
+        }
+    }
+}
 
 /* --------------------------------------------------------------
 3.- HOME
 -------------------------------------------------------------- */
+.the-boxes {
+    padding: 4rem 1rem;
+    padding-bottom: 1rem;
+
+    & article.boxes-item {
+        & .boxes-item-wrapper {
+            position: relative;
+            overflow: hidden;
+
+            & img {
+                width: 100%;
+                .transition(all .3s ease-in-out);
+            }
+
+            & .boxes-item-link-wrapper {
+                position: absolute;
+                border: 1px solid @white;
+                top: 13px;
+                left: 20px;
+                width: 90%;
+                height: 90%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                & a {
+                    color: @black;
+                    background: @white;
+                    padding: 0.5rem 1.2rem;
+                    text-transform: uppercase;
+                    font-weight: 400;
+
+
+                    &:hover {
+                        background: @black;
+                        color: @white;
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            & img {
+                .transform(scale(1.1));
+            }
+        }
+    }
+
+    & .row-boxes {
+        & article:nth-child(1) {
+            padding-left: 0;
+        }
+
+        & article:nth-child(2) {
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }
+
+        & article:nth-child(3) {
+            padding-right: 0;
+        }
+    }
+}
+
+.the-newsletter {
+    padding: 2rem 1rem;
+
+    .newsletter-container {
+        background: @gray;
+        padding: 2rem;
+
+        & .newsletter-text {
+            color: @hgray;
+            font-size: 1rem;
+
+            & h2 {
+                color: @black;
+                font-family: @secondfont;
+            }
+
+            & p {
+                letter-spacing: -0.5px;
+                margin-bottom: 0;
+            }
+        }
+
+        & .newsletter-form {
+            & .mailchimp-single-form-wrapper {
+                & .form-control {
+                    padding: 0.5rem 1rem;
+                    font-size: 0.9rem;
+                    border-radius: 0;
+                    letter-spacing: -0.5px;
+                    height: auto;
+                    .placeholder(@hgray);
+                }
+
+                & .btn {
+                    border-radius: 0;
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+}
+
+.the-blog {
+    padding: 4rem 1rem;
+
+    & .row-blog {
+        & article.blog-entry:nth-child(odd) {
+            padding-left: 0;
+        }
+
+        & article.blog-entry:nth-child(even) {
+            padding-right: 0;
+        }
+    }
+}
+
+
+/* --------------------------------------------------------------
+6.- BLOG
+-------------------------------------------------------------- */
+.blog-entry {
+    margin-bottom: 2rem;
+
+    .blog-entry-wrapper {
+        background: @gray;
+        overflow: hidden;
+
+        & .blog-entry-picture {
+            overflow: hidden;
+
+            & img {
+                .transition(all .3s ease-in-out);
+            }
+        }
+
+        &:hover {
+            & img {
+                .transform(scale(1.1));
+            }
+        }
+
+        & .blog-entry-header {
+            padding: 1rem 2rem;
+            padding-bottom: 0;
+
+            & a {
+                color: @black;
+            }
+
+            & h3 {
+                font-family: @secondfont;
+                font-size: 1.5rem;
+                margin-top: 0.8rem;
+                margin-bottom: 0;
+                font-weight: 400;
+            }
+
+            & .categories {
+                & ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    .display(flex);
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+
+                    & a {
+                        color: @orange;
+                        text-transform: uppercase;
+                        font-size: .9rem;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        & .blog-entry-excerpt {
+            color: @hgray;
+            padding: 0rem 2rem;
+            font-size: 0.9rem;
+            line-height: 1.6rem;
+            font-weight: 400;
+            letter-spacing: -0.6px;
+        }
+
+        & .blog-entry-date {
+            color: @hgray;
+            padding: 0 2rem;
+            padding-bottom: 2rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    }
+}

@@ -110,7 +110,7 @@ function manzanilla_custom_logo() {
 <style type="text/css">
     #wpadminbar #wp-admin-bar-wp-logo>.ab-item .ab-icon:before {
         background-image: url(<?php echo get_template_directory_uri('/');
-        ?>/images/apple-touch-icon.png) !important;
+            ?>/images/apple-touch-icon.png) !important;
         background-size: cover;
         background-position: 0 0;
         color: rgba(0, 0, 0, 0);
@@ -119,6 +119,7 @@ function manzanilla_custom_logo() {
     #wpadminbar #wp-admin-bar-wp-logo.hover>.ab-item .ab-icon {
         background-position: 0 0;
     }
+
 </style>
 <?php
     $content = ob_get_clean();
@@ -139,3 +140,108 @@ function dashboard_footer() {
     echo '<a href="http://robertochoa.com.ve/?utm_source=footer_admin&utm_medium=link&utm_content=manzanilla" target="_blank">Robert Ochoa</a></span>';
 }
 add_filter('admin_footer_text', 'dashboard_footer');
+
+
+/* --------------------------------------------------------------
+    CUSTOM EXCERPT LENGTH
+-------------------------------------------------------------- */
+function manzanilla_excerpt_length($length){
+    return 12;
+}
+add_filter('excerpt_length', 'manzanilla_excerpt_length');
+
+/* --------------------------------------------------------------
+    CUSTOM SOCIAL WIDGET
+-------------------------------------------------------------- */
+// Creating the widget
+class custom_social_widget extends WP_Widget {
+
+    function __construct() {
+        parent::__construct(
+
+            // Base ID of your widget
+            'custom_social_widget',
+
+            // Widget name will appear in UI
+            __('Social Networks Widget', 'manzanilla'),
+
+            // Widget description
+            array( 'description' => __( 'Social Networks added in customize', 'manzanilla' ), )
+        );
+    }
+
+    // Creating widget front-end
+
+    public function widget( $args, $instance ) {
+        $title = apply_filters( 'widget_title', $instance['title'] );
+
+        // before and after widget arguments are defined by themes
+        echo $args['before_widget'];
+        if ( ! empty( $title ) )
+            echo $args['before_title'] . $title . $args['after_title'];
+        $social_options = get_option('mcr_social_settings');
+
+?>
+<div class="social-header">
+    <?php if ((isset($social_options['facebook'])) && ($social_options['facebook'] != '')) { ?>
+    <a href="<?php echo $social_options['facebook']; ?>" title="<?php _e('Haz clic aquí para visitar nuestro perfil', 'manzanilla'); ?>" target="_blank"><i class="fa fa-facebook-official"></i></a>
+    <?php } ?>
+
+    <?php if ((isset($social_options['twitter'])) && ($social_options['twitter'] != '')) { ?>
+    <a href="<?php echo $social_options['twitter']; ?>" title="<?php _e('Haz clic aquí para visitar nuestro perfil', 'manzanilla'); ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+    <?php } ?>
+
+     <?php if ((isset($social_options['linkedin'])) && ($social_options['linkedin'] != '')) { ?>
+    <a href="<?php echo $social_options['linkedin']; ?>" title="<?php _e('Haz clic aquí para visitar nuestro perfil', 'manzanilla'); ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+    <?php } ?>
+
+    <?php if ((isset($social_options['instagram'])) && ($social_options['instagram'] != '')) { ?>
+    <a href="<?php echo $social_options['instagram']; ?>" title="<?php _e('Haz clic aquí para visitar nuestro perfil', 'manzanilla'); ?>" target="_blank"><i class="fa fa-instagram"></i></a>
+    <?php } ?>
+
+    <?php if ((isset($social_options['youtube'])) && ($social_options['youtube'] != '')) { ?>
+    <a href="<?php echo $social_options['youtube']; ?>" title="<?php _e('Haz clic aquí para visitar nuestro perfil', 'manzanilla'); ?>" target="_blank"><i class="fa fa-youtube-play"></i></a>
+    <?php } ?>
+
+     <?php if ((isset($social_options['pinterest'])) && ($social_options['pinterest'] != '')) { ?>
+    <a href="<?php echo $social_options['pinterest']; ?>" title="<?php _e('Haz clic aquí para visitar nuestro perfil', 'manzanilla'); ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
+    <?php } ?>
+</div>
+<?php
+        // This is where you run the code and display the output
+        echo $args['after_widget'];
+    }
+
+    // Widget Backend
+    public function form( $instance ) {
+        if ( isset( $instance[ 'title' ] ) ) {
+            $title = $instance[ 'title' ];
+        }
+        else {
+            $title = __( 'Redes Sociales', 'manzanilla' );
+        }
+        // Widget admin form
+?>
+<p>
+    <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+    <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+</p>
+<?php
+    }
+
+    // Updating widget replacing old instances with new
+    public function update( $new_instance, $old_instance ) {
+        $instance = array();
+        $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        return $instance;
+    }
+
+    // Class wpb_widget ends here
+}
+
+
+// Register and load the widget
+function wpb_load_widget() {
+    register_widget( 'custom_social_widget' );
+}
+add_action( 'widgets_init', 'wpb_load_widget' );
