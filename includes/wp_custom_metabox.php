@@ -65,4 +65,12 @@ function manzanilla_register_custom_metabox() {
     /* HOME */
     require_once('custom-metabox-home.php');
 
+    /* ABOUT */
+    require_once('custom-metabox-about.php');
+
+    /* SERVICES */
+    require_once('custom-metabox-services.php');
+
+    /* CONTACTO */
+    require_once('custom-metabox-contact.php');
 }

@@ -132,7 +132,27 @@ if ( function_exists('add_theme_support') ) {
 }
 if ( function_exists('add_image_size') ) {
     add_image_size('avatar', 100, 100, true);
-    add_image_size('logo', 200, 50, true);
+    add_image_size('logo', 200, 50, false);
     add_image_size('blog_img', 385, 295, true);
-    add_image_size('single_img', 636, 297, true );
+    add_image_size('single_img', 9999, 500, true );
+}
+
+/* --------------------------------------------------------------
+    CUSTOM BUTTONS SHARE
+-------------------------------------------------------------- */
+function custom_share_buttons() {
+    ob_start();
+?>
+<div class="single-share-buttons">
+    <a href="https://www.facebook.com/sharer.php?u=<?php echo get_permalink(); ?>" target="_blank"><i class="fa fa-facebook"></i></a>
+    <a href="https://twitter.com/share?url=<?php echo get_permalink(); ?>&text=<?php echo get_the_title(); ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+    <a href="https://pinterest.com/pin/create/button/?url=<?php echo get_permalink(); ?>&media=<?php echo get_the_post_thumbnail_url(); ?>&description=<?php echo get_the_title(); ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_permalink(); ?>&title=<?php echo get_the_title(); ?>&summary=<?php echo get_the_title(); ?>&source=<?php echo home_url('/'); ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+    <?php $email = 'mailto:?subject=' . get_the_title() . '&body='. get_permalink(); ?>
+    <a href="<?php echo $email; ?>" target="_blank"><i class="fa fa-envelope"></i></a>
+    <a href="https://api.whatsapp.com/send?text=<?php echo get_the_title(); ?> <?php echo get_permalink(); ?>" target="_blank"><i class="fa fa-whatsapp"></i></a>
+</div>
+<?php
+    $content = ob_get_clean();
+    echo $content;
 }

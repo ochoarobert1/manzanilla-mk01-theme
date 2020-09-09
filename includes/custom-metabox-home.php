@@ -68,15 +68,15 @@ $group_field_id = $cmb_home_boxes->add_field( array(
 
 $cmb_home_boxes->add_group_field( $group_field_id, array(
     'id'   => 'box_bg',
-    'name'      => esc_html__( 'Imagen de Fondo', 'holpack' ),
-    'desc'      => esc_html__( 'Cargar un fondo para esta caja', 'holpack' ),
+    'name'      => esc_html__( 'Imagen de Fondo', 'manzanilla' ),
+    'desc'      => esc_html__( 'Cargar un fondo para esta caja', 'manzanilla' ),
     'type'    => 'file',
 
     'options' => array(
         'url' => false
     ),
     'text'    => array(
-        'add_upload_file_text' => esc_html__( 'Cargar Imagen de Fondo', 'holpack' ),
+        'add_upload_file_text' => esc_html__( 'Cargar Imagen de Fondo', 'manzanilla' ),
     ),
     'query_args' => array(
         'type' => array(

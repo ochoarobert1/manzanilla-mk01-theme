@@ -1,6 +1,6 @@
 <?php /* POST FORMAT - STATUS */ ?>
 <?php $defaultatts = array('class' => 'img-fluid', 'itemprop' => 'image'); ?>
-<article id="post-<?php the_ID(); ?>" class="the-single col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 <?php echo join(' ', get_post_class()); ?>" itemscope itemtype="http://schema.org/Article">
+<article id="post-<?php the_ID(); ?>" class="the-single col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 <?php echo join(' ', get_post_class()); ?>" itemscope itemtype="http://schema.org/Article">
     <?php if ( has_post_thumbnail()) : ?>
     <picture>
         <?php the_post_thumbnail('single_img', $defaultargs); ?>

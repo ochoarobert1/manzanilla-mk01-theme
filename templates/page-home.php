@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="row row-boxes justify-content-between">
                     <?php foreach ($arr_boxes as $item) { ?>
-                    <article class="boxes-item col-4">
+                    <article class="boxes-item col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                         <div class="boxes-item-wrapper">
                             <img src="<?php echo $item['box_bg']; ?>" alt="<?php echo $item['title']; ?>" class="img-fluid" />
                             <div class="boxes-item-link-wrapper">
@@ -39,11 +39,11 @@
                 <div class="row">
                     <div class="newsletter-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="row align-items-center">
-                            <div class="newsletter-text col-6">
+                            <div class="newsletter-text col-xl-6 col-lg-6 col-md-5 col-sm-12 col-12">
                                 <h2>¡Únete a mi Newsletter!</h2>
                                 <p>Recibe noticias, recursos y más.</p>
                             </div>
-                            <div class="newsletter-form col-6">
+                            <div class="newsletter-form  col-xl-6 col-lg-6 col-md-7 col-sm-12 col-12">
                                 <?php echo get_template_part('templates/template-mailchimp-form'); ?>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                         <div class="container">
                             <div class="row row-blog">
                                 <?php while ($arr_posts->have_posts()) : $arr_posts->the_post(); ?>
-                                <article id="post-<?php echo get_the_ID(); ?>" class="blog-entry col-6">
+                                <article id="post-<?php echo get_the_ID(); ?>" class="blog-entry col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="blog-entry-wrapper">
                                         <picture class="blog-entry-picture">
                                             <a href="<?php the_permalink(); ?>" title="<?php _e('Leer más', 'manzanilla'); ?>">

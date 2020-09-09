@@ -54,17 +54,19 @@
         <div class="row no-gutters justify-content-center ">
             <div class="the-header col-xl-11 col-lg-11 col-md-12 col-sm-12 col-12">
                 <div class="row align-items-center">
-                    <div class="header-navbar-container col-9">
+                    <div class="header-logo col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+                        <a class="navbar-brand" href="<?php echo home_url('/');?>" title="<?php echo get_bloginfo('name'); ?>">
+                            <?php $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
+                            <?php $image = wp_get_attachment_image_src( $custom_logo_id , 'logo' ); ?>
+                            <?php if (!empty($image)) { ?>
+                            <img src="<?php echo $image[0]; ?>" alt="<?php echo get_bloginfo('name'); ?>" class="img-fluid img-logo" width="<?php echo $image[1]; ?>" height="<?php echo $image[2]; ?>" />
+                            <?php } else { ?>
+                            Navbar
+                            <?php } ?>
+                        </a>
+                    </div>
+                    <div class="header-navbar-container col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 d-xl-block d-lg-block d-md-none d-sm-none d-none">
                         <nav class="navbar navbar-expand-md" role="navigation">
-                            <a class="navbar-brand" href="<?php echo home_url('/');?>" title="<?php echo get_bloginfo('name'); ?>">
-                                <?php $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
-                                <?php $image = wp_get_attachment_image_src( $custom_logo_id , 'logo' ); ?>
-                                <?php if (!empty($image)) { ?>
-                                <img src="<?php echo $image[0]; ?>" alt="<?php echo get_bloginfo('name'); ?>" class="img-fluid img-logo" width="<?php echo $image[1]; ?>" height="<?php echo $image[2]; ?>" />
-                                <?php } else { ?>
-                                Navbar
-                                <?php } ?>
-                            </a>
                             <!-- Brand and toggle get grouped for better mobile display -->
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
@@ -81,11 +83,10 @@
                                     'walker'          => new WP_Bootstrap_Navwalker(),
                                 ) );
                                 ?>
-
                         </nav>
                     </div>
-                    <div class="header-social-container col-3">
-                        <div class="header-social-content">
+                    <div class="header-social-container col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
+                        <div class="header-social-content d-xl-block d-lg-block d-md-block d-sm-block d-none">
                             <?php $social_options = get_option('mcr_social_settings'); ?>
                             <?php if ((isset($social_options['facebook'])) && ($social_options['facebook'] != '')) { ?>
                             <a href="<?php echo $social_options['facebook']; ?>" title="<?php _e('Haz clic aquí para visitar nuestro perfil', 'manzanilla'); ?>" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -111,8 +112,15 @@
                             <a href="<?php echo $social_options['youtube']; ?>" title="<?php _e('Haz clic aquí para visitar nuestro perfil', 'manzanilla'); ?>" target="_blank"><i class="fa fa-youtube-play"></i></a>
                             <?php } ?>
                         </div>
-                        <div class="header-search-container">
+                        <div class="header-search-container d-xl-block d-lg-block d-md-block d-sm-block d-none">
                             <a href=""><i class="fa fa-search"></i></a>
+                        </div>
+                        <div class="header-menu-mobile-container d-xl-none d-lg-none d-md-block d-sm-block d-block">
+                            <div id="menuBtn" class="menu-btn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
                     </div>
                 </div>

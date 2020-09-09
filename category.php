@@ -1,57 +1,64 @@
 <?php get_header(); ?>
-<main class="container" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-    <div class="row">
-        <div class="page-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="container p-0">
+<main class="container-fluid p-0" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+    <div class="row no-gutters">
+        <?php $thumbnail = get_template_directory_uri() . '/images/banner_bg.png'; ?>
+        <section class="banner-container banner-category col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="background: url(<?php echo $thumbnail; ?>);">
+            <div class="container">
                 <div class="row">
-                    <div class="title-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="banner-content col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <h1><?php single_cat_title(); ?></h1>
                     </div>
+                </div>
+            </div>
+        </section>
+        <div class="page-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="container">
+                <div class="row">
                     <?php if (have_posts()) : ?>
-                    <section class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-                        <?php $defaultatts = array('class' => 'img-fluid', 'itemprop' => 'image'); ?>
-                        <?php while (have_posts()) : the_post(); ?>
-                        <article id="post-<?php the_ID(); ?>" class="archive-item col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 <?php echo join(' ', get_post_class()); ?>" role="article">
-                            <div class="container p-0">
-                                <div class="row">
-                                    <picture class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12">
-                                        <?php if ( has_post_thumbnail()) : ?>
-                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                            <?php the_post_thumbnail('blog_img', $defaultatts); ?>
+                    <section class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
+                        <div class="row row-blog">
+                            <?php while (have_posts()) : the_post(); ?>
+                            <article id="post-<?php echo get_the_ID(); ?>" class="blog-entry col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="blog-entry-wrapper">
+                                    <picture class="blog-entry-picture">
+                                        <a href="<?php the_permalink(); ?>" title="<?php _e('Leer más', 'manzanilla'); ?>">
+                                            <?php the_post_thumbnail('blog_img', array('class' => 'img-fluid')); ?>
                                         </a>
-                                        <?php else : ?>
-                                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                            <img itemprop="image" src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/no-img.jpg" alt="No img" class="img-fluid" />
-                                        </a>
-                                        <?php endif; ?>
                                     </picture>
-                                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12">
-                                        <header>
-                                            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                                <h2 rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
-                                            </a>
-                                            <time class="date" datetime="<?php echo get_the_time('Y-m-d') ?>" itemprop="datePublished"><?php the_time('d-m-Y'); ?></time>
-                                            <span class="author" itemprop="author" itemscope itemptype="http://schema.org/Person"><?php _e('Publicado por:', 'manzanilla'); ?> <?php the_author_posts_link(); ?></span>
-                                        </header>
+                                    <header class="blog-entry-header">
+                                        <div class="categories">
+                                            <?php the_category();  ?>
+                                        </div>
+                                        <a href="<?php the_permalink(); ?>" title="<?php _e('Leer más', 'manzanilla'); ?>">
+                                            <h3><?php the_title(); ?></h3>
+                                        </a>
+                                    </header>
+                                    <div class="blog-entry-excerpt">
                                         <p><?php the_excerpt(); ?></p>
-                                        <a href="<?php the_permalink(); ?>" title="<?php _e('Leer Más', 'manzanilla'); ?>" class="btn btn-md btn-dark"><?php _e('Leer Más', 'manzanilla'); ?></a>
                                     </div>
+                                    <footer class="blog-entry-date">
+                                        <?php echo get_the_date('F j, Y');?>
+                                    </footer>
                                 </div>
-                            </div>
-                        </article>
-                        <?php endwhile; ?>
+                            </article>
+
+                            <?php endwhile; ?>
+                        </div>
                         <div class="pagination col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <?php if(function_exists('wp_paginate')) { wp_paginate(); } else { posts_nav_link(); wp_link_pages(); } ?>
                         </div>
                     </section>
-                    <aside class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                    <aside class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-xl-block d-lg-block d-md-block d-sm-none d-none">
                         <?php get_sidebar(); ?>
                     </aside>
                     <?php else: ?>
-                    <section class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <section class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
                         <h2><?php _e('Disculpe, su busqueda no arrojo ningun resultado', 'manzanilla'); ?></h2>
                         <h3><?php _e('Dirígete nuevamente al', 'manzanilla'); ?> <a href="<?php echo home_url('/'); ?>" title="<?php _e('Volver al Inicio', 'manzanilla'); ?>"><?php _e('inicio', 'manzanilla'); ?></a>.</h3>
                     </section>
+                    <aside class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-xl-block d-lg-block d-md-block d-sm-none d-none">
+                        <?php get_sidebar(); ?>
+                    </aside>
                     <?php endif; ?>
                 </div>
             </div>

@@ -23,21 +23,21 @@
                     <div class="the-footer-wrapper col-xl-11 col-lg-11 col-md-12 col-sm-12 col-12">
                         <div class="row row-footer">
                             <?php if ( is_active_sidebar( 'sidebar_footer' ) ) : ?>
-                            <article class="footer-item col-xl-4 col-lg-4 col-md col-sm-12 col-12">
+                            <article class="footer-item col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                                 <ul id="sidebar-footer1" class="footer-sidebar">
                                     <?php dynamic_sidebar( 'sidebar_footer' ); ?>
                                 </ul>
                             </article>
                             <?php endif; ?>
                             <?php if ( is_active_sidebar( 'sidebar_footer-2' ) ) : ?>
-                            <article class="footer-item col-xl-4 col-lg-4 col-md col-sm-12 col-12">
+                            <article class="footer-item col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                                 <ul id="sidebar-footer2" class="footer-sidebar">
                                     <?php dynamic_sidebar( 'sidebar_footer-2' ); ?>
                                 </ul>
                             </article>
                             <?php endif; ?>
                             <?php if ( is_active_sidebar( 'sidebar_footer-3' ) ) : ?>
-                            <article class="footer-item col-xl-4 col-lg-4 col-md col-sm-12 col-12">
+                            <article class="footer-item col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
                                 <ul id="sidebar-footer3" class="footer-sidebar">
                                     <?php dynamic_sidebar( 'sidebar_footer-3' ); ?>
                                 </ul>
